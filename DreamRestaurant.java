@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.Random;
 
+
+
 public class DreamRestaurant {
     public static void main(String[] args) {
         //below i created an array for apps, entrees, and desserts
@@ -59,27 +61,56 @@ public class DreamRestaurant {
             int randomIndex = random.nextInt(allFoodItems.length);
             randomFoodItems[i] = allFoodItems[randomIndex];
         }
+        //define an array to track the counts of items ordered
+//        int[] itemCounts = new int[allFoodItems.length];
+//        //iterate through the randomFoodsItems and update the count
+//        for (MenuItem item : randomFoodItems) {
+//            int itemIndex = findItemIndex(item, allFoodItems);
+//            if (itemIndex != -1) {
+//                itemCounts[itemIndex]++;
+//            }
+//
+//        }
+
+
         //below i am displaying the random food items
         System.out.println( "\nHooray! What a successful day at our Dream Restaurant's drive thru! We've fulfilled our days worth of items sold. Check it out!: ");
         for (int i = 0; i < randomFoodItems.length; i++) {
             System.out.println(randomFoodItems[i]);
 
         }
+
         //below i am calculating the total money made
         double totalMoneyMade = 0.0;
         for(MenuItem item : randomFoodItems){
             totalMoneyMade += item.getPrice();
+            String itemName = item.getName();
+
+
         }
+
+
         // below i am calculating and displaying the percentage if sales for each item
 
 
         System.out.println("\nSummary: ");
         System.out.println("\nTotal Money Made: $" + totalMoneyMade);
+
         System.out.println("\nSales Percentage for each item: ");
-        for (MenuItem item: randomFoodItems) {
+        for (MenuItem item: allFoodItems) {
             double salesPercentage = (item.getPrice() /  totalMoneyMade) * 100;
             System.out.println(item.getName() + ": " + salesPercentage + "%");
         }
+        // Display items ordered and their counts
+//        System.out.println("\nItems Ordered and Their Counts:");
+//        for (int i = 0; i < allFoodItems.length; i++) {
+//            if (itemCounts[i] > 0) {
+//                System.out.println(allFoodItems[i].getName() + ": " + itemCounts[i] + " times");
+//            }
+//        }
+
+
+
 
     }
 }
@@ -102,6 +133,14 @@ class MenuItem {
     //calling getName()
     public String getName() {
         return name;
+    }
+    public static int findItemIndex(MenuItem item, MenuItem[] items) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i].getName().equals(item.getName())) {
+                return i;
+            }
+        }
+        return -1; // Item not found
     }
 
     @Override

@@ -18,13 +18,13 @@ public class DreamRestaurant {
         entrees[0] = new MenuItem("Chicken parm w/ pasta", 12.99);
         entrees[1] = new MenuItem("American cheese burger w/ fries", 14.99);
         entrees[2] = new MenuItem("Grilled cheese w/ tomato soup", 13.99);
-        entrees[3] = new MenuItem("10 piece wings 2/ fries", 14.99);
+        entrees[3] = new MenuItem("10 piece wings w/ fries", 14.99);
         entrees[4] = new MenuItem("Baked chicken w/ veggies", 14.99);
 
         desserts[0] = new MenuItem("Fried ice-cream", 6.99);
         desserts[1] = new MenuItem("Cheese cake", 7.99);
         desserts[2] = new MenuItem("Banana foster", 7.99);
-        desserts[3] = new MenuItem("Cake pops", 3.99);
+        desserts[3] = new MenuItem("Acai bowl", 12.99);
         desserts[4] = new MenuItem("Funnel cake", 10.99);
 
         System.out.println("Below is my Dream Menu: ");
@@ -65,6 +65,13 @@ public class DreamRestaurant {
             System.out.println(randomFoodItems[i]);
 
         }
+        //below i am calculating the total money made
+        double totalMoneyMade = 0.0;
+        for(MenuItem item : randomFoodItems){
+            totalMoneyMade += item.getPrice();
+        }
+        System.out.println("\nSummary: ");
+        System.out.println("Total Money Made: $" + totalMoneyMade);
 
     }
 }
@@ -79,6 +86,10 @@ class MenuItem {
     public MenuItem(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+    //in order to get the price from the dream restaurant class i had to create a getPrice function in the MenuItem class
+    public double getPrice() {
+        return price;
     }
     @Override
     public String toString() {

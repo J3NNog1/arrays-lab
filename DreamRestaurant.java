@@ -70,8 +70,16 @@ public class DreamRestaurant {
         for(MenuItem item : randomFoodItems){
             totalMoneyMade += item.getPrice();
         }
+        // below i am calculating and displaying the percentage if sales for each item
+
+
         System.out.println("\nSummary: ");
-        System.out.println("Total Money Made: $" + totalMoneyMade);
+        System.out.println("\nTotal Money Made: $" + totalMoneyMade);
+        System.out.println("\nSales Percentage for each item: ");
+        for (MenuItem item: randomFoodItems) {
+            double salesPercentage = (item.getPrice() /  totalMoneyMade) * 100;
+            System.out.println(item.getName() + ": " + salesPercentage + "%");
+        }
 
     }
 }
@@ -91,6 +99,11 @@ class MenuItem {
     public double getPrice() {
         return price;
     }
+    //calling getName()
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name + ": $" + price;
